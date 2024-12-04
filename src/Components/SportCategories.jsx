@@ -1,8 +1,5 @@
 
-
-const Register = () => {
-    
-
+const SportCategories = () => {
     return (
         <div>
             
@@ -10,4 +7,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default SportCategories;

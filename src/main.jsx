@@ -16,11 +16,14 @@ import PrivateRoute from './PrivateRoutes/PrivateRoute.jsx';
 import AllEquipment from './Components/AllEquipment.jsx';
 import MyList from './Components/MyList.jsx';
 import AddEquipment from './Components/AddEquipment.jsx';
+import AuthProvider from './Providers/AuthProvider.jsx';
+import ErrorPage from './Components/ErrorPage.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -49,6 +52,7 @@ const router = createBrowserRouter([
   {
     path: "/auth",
     element: <Auth></Auth>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/auth/login",
@@ -64,6 +68,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 )
