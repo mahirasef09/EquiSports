@@ -1,9 +1,10 @@
 import { createContext, useEffect, useState } from 'react';
 import { auth } from '../Firebase/firebase.init';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import Swal from 'sweetalert2';
 
 export const AuthContext = createContext(null);
+const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
@@ -22,6 +23,11 @@ const AuthProvider = ({children}) => {
     const userLogin = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
+    }
+
+    const signInUserWithGoogle = () => {
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider);
     }
 
     const userLogout = () => {
@@ -54,6 +60,7 @@ const AuthProvider = ({children}) => {
         createNewUser,
         updateUserProfile,
         userLogin,
+        signInUserWithGoogle,
         userLogout
     }
 

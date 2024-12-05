@@ -6,7 +6,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-    const { userLogin, setUser, setLoading } = useContext(AuthContext);
+    const { userLogin, signInUserWithGoogle, setUser, setLoading } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
@@ -25,7 +25,7 @@ const Login = () => {
                     text: 'Login Successful',
                     icon: 'success',
                     confirmButtonText: 'Cool'
-                })
+                });
                 e.target.reset();
                 navigate(location?.state ? location.state : "/");
             })
@@ -39,6 +39,30 @@ const Login = () => {
                 setLoading(false);
                 e.target.reset();
             });
+
+    }
+
+    const handleGoogleSignIn = () => {
+        signInUserWithGoogle()
+            .then(result => {
+                const currentUser = result.user;
+                setUser(currentUser);
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Login Successful with Google',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                });
+                navigate(location?.state ? location.state : "/");
+            })
+            .catch(err => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: err.message,
+                    icon: 'error',
+                    confirmButtonText: 'Oops'
+                });
+            })
     }
 
     return (
@@ -65,7 +89,9 @@ const Login = () => {
                         </div>
                         <div className="divider">or</div>
                         <div className="form-control">
-                            <button className="btn bg-gray-200"><FcGoogle />Continue with Google</button>
+                            <button 
+                            onClick={handleGoogleSignIn} 
+                            className="btn bg-gray-200"><FcGoogle />Continue with Google</button>
                         </div>
                     </form>
                     <p className='text-center text-xs font-semibold'>Don’t Have An Account ? <Link className='text-blue-500' to={"/auth/register"}>Register</Link></p>

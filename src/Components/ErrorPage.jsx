@@ -8,7 +8,7 @@ const ErrorPage = () => {
             <h1 className='text-6xl font-bold '>Page not found</h1>
             <h2 className='text-4xl font-bold text-red-500'>Status: 404</h2>
             <p className='font-bold'>Error Message: {error.statusText || error.message}</p>
-            <Link to="/"><button className='btn btn-sm mt-5'>Go to Home</button></Link>
+            <Link to="/"><button className='btn btn-neutral btn-sm mt-5'>Go to Home</button></Link>
         </div>
     );
 };
