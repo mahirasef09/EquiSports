@@ -3,6 +3,7 @@ import { MdSportsVolleyball } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { FaUserTie } from "react-icons/fa";
+import { Tooltip } from 'react-tooltip';
 
 const NavBar = () => {
     const { user, userLogout } = useContext(AuthContext);
@@ -12,8 +13,6 @@ const NavBar = () => {
         <li><NavLink to={'/allequipment'}>All Equipment</NavLink></li>
         <li><NavLink to={'/addequipment'}>Add Equipment</NavLink></li>
         <li><NavLink to={'/mylist'}>My List</NavLink></li>
-        <li><NavLink to={'/auth/login'}>Login</NavLink></li>
-        <li><NavLink to={'/auth/register'}>Register</NavLink></li>
     </>
     return (
         <div>
@@ -52,14 +51,14 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                <div className="flex gap-2 items-center">
+                    <div className="flex gap-2 items-center">
                         <div>
                             {
-                                user && user?.email ? 
-                                <div className="hidden md:flex gap-2 items-center tooltip tooltip-bottom" data-tip={user?.displayName}>
-                                    <img className="w-12 rounded-none" src={user?.photoURL} alt="" />
-                                </div> : 
-                                <FaUserTie></FaUserTie>
+                                user && user?.email ?
+                                    <div className="hidden md:flex gap-2 items-center" data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} data-tooltip-place="bottom">
+                                        <img className="w-12 rounded-none" src={user?.photoURL} alt="" />
+                                    </div> :
+                                    <FaUserTie></FaUserTie>
                             }
                         </div>
                         <div>
@@ -68,6 +67,7 @@ const NavBar = () => {
                             }
                         </div>
                         <a className="btn btn-neutral btn-sm">Dark</a>
+                        <Tooltip id="my-tooltip" />
                     </div>
                 </div>
             </div>
