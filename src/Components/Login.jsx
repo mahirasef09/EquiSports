@@ -1,17 +1,52 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
+    const { userLogin, setUser, setLoading } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        userLogin(email, password)
+            .then((result) => {
+                const currentUser = result.user;
+                setUser(currentUser);
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Login Successful',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+                e.target.reset();
+                navigate(location?.state ? location.state : "/");
+            })
+            .catch((err) => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: err.message,
+                    icon: 'error',
+                    confirmButtonText: 'Oops'
+                });
+                setLoading(false);
+                e.target.reset();
+            });
+    }
 
     return (
         <div>
             <div className='min-h-screen flex justify-center items-center'>
                 <div className="card bg-base-100 w-full max-w-lg shrink-0 p-10 rounded-3xl shadow-2xl">
                     <h3 className='text-2xl font-extrabold text-center'>Welcome Back!</h3>
-                    <form className="card-body">
+                    <form onSubmit={handleSubmit} className="card-body">
                         <div className="form-control">
                             <input type="email" name="email" placeholder="Email" className="input input-bordered" required />
                         </div>

@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import { MdSportsVolleyball } from "react-icons/md";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import { FaUserTie } from "react-icons/fa";
 
 const NavBar = () => {
+    const { user, userLogout } = useContext(AuthContext);
+
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/allequipment'}>All Equipment</NavLink></li>
@@ -47,7 +52,23 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn btn-neutral">Dark</a>
+                <div className="flex gap-2 items-center">
+                        <div>
+                            {
+                                user && user?.email ? 
+                                <div className="hidden md:flex gap-2 items-center tooltip tooltip-bottom" data-tip={user?.displayName}>
+                                    <img className="w-12 rounded-none" src={user?.photoURL} alt="" />
+                                </div> : 
+                                <FaUserTie></FaUserTie>
+                            }
+                        </div>
+                        <div>
+                            {
+                                user && user?.email ? <button onClick={userLogout} className="btn btn-neutral btn-sm hover:bg-primary">Log Out</button> : <Link to={"/auth/login"} className="btn btn-info btn-sm">Login</Link>
+                            }
+                        </div>
+                        <a className="btn btn-neutral btn-sm">Dark</a>
+                    </div>
                 </div>
             </div>
         </div>

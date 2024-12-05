@@ -3,10 +3,9 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
-import { toast } from "react-toastify";
 
 const Register = () => {
-    const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
+    const { createNewUser, setUser, setLoading, updateUserProfile } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
@@ -25,8 +24,8 @@ const Register = () => {
                 title: 'Error!',
                 text: 'Password must have one Uppercase, one Lowercase Letter and at least 6 characters',
                 icon: 'error',
-                confirmButtonText: 'Cool'
-              })
+                confirmButtonText: 'Oops'
+            })
             return;
         }
 
@@ -38,19 +37,31 @@ const Register = () => {
                 Swal.fire({
                     title: 'Success!',
                     text: 'Registration Successful',
-                    icon: 'Success',
+                    icon: 'success',
                     confirmButtonText: 'Cool'
-                  })
+                })
                 updateUserProfile({ displayName: name, photoURL: photoUrl })
                     .then(() => {
                         navigate("/")
                     })
                     .catch((err) => {
-                        toast(err.message)
+                        Swal.fire({
+                            title: 'Error!',
+                            text: err.message,
+                            icon: 'error',
+                            confirmButtonText: 'Oops'
+                        });
+                        setLoading(false);
                     })
             })
             .catch((err) => {
-                toast(err.message);
+                Swal.fire({
+                    title: 'Error!',
+                    text: err.message,
+                    icon: 'error',
+                    confirmButtonText: 'Oops'
+                });
+                setLoading(false);
                 e.target.reset();
             });
     }
