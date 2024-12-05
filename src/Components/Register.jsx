@@ -1,16 +1,66 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const Register = () => {
+    const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const form = new FormData(e.target);
+        const name = form.get("name");
+        const photoUrl = form.get("photoUrl");
+        const email = form.get("email");
+        const password = form.get("password");
+
+        const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+        if (!passwordRegex.test(password)) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Password must have one Uppercase, one Lowercase Letter and at least 6 characters',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
+            return;
+        }
+
+        createNewUser(email, password)
+            .then((result) => {
+                const currentUser = result.user;
+                setUser(currentUser);
+                e.target.reset();
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Registration Successful',
+                    icon: 'Success',
+                    confirmButtonText: 'Cool'
+                  })
+                updateUserProfile({ displayName: name, photoURL: photoUrl })
+                    .then(() => {
+                        navigate("/")
+                    })
+                    .catch((err) => {
+                        toast(err.message)
+                    })
+            })
+            .catch((err) => {
+                toast(err.message);
+                e.target.reset();
+            });
+    }
 
     return (
         <div>
             <div className='min-h-screen flex justify-center items-center my-3'>
                 <div className="card bg-base-100 w-full max-w-lg shrink-0 p-10 rounded-3xl shadow-2xl">
                     <h3 className='text-2xl font-extrabold text-center'>Welcome!</h3>
-                    <form className="card-body">
+                    <form onSubmit={handleSubmit} className="card-body">
                         <div className="form-control">
                             <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
                         </div>
