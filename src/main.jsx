@@ -18,6 +18,7 @@ import MyList from './Components/MyList.jsx';
 import AddEquipment from './Components/AddEquipment.jsx';
 import AuthProvider from './Providers/AuthProvider.jsx';
 import ErrorPage from './Components/ErrorPage.jsx';
+import ViewDetails from './Components/ViewDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,13 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <AddEquipment></AddEquipment>
         </PrivateRoute>,
+      },
+      {
+        path: "/viewDetails/:id",
+        element: <PrivateRoute>
+          <ViewDetails></ViewDetails>
+        </PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/equipment/${params.id}`)
       },
       {
         path: "/myList",
