@@ -10,13 +10,13 @@ const NavBar = () => {
 
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
-        <li><NavLink to={'/allequipment'}>All Equipment</NavLink></li>
-        <li><NavLink to={'/addequipment'}>Add Equipment</NavLink></li>
-        <li><NavLink to={'/mylist'}>My List</NavLink></li>
+        <li><NavLink to={'/allEquipment'}>All Equipment</NavLink></li>
+        <li><NavLink to={'/addEquipment'}>Add Equipment</NavLink></li>
+        <li><NavLink to={'/myList'}>My List</NavLink></li>
     </>
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-gray-100">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

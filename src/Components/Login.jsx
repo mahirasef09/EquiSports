@@ -62,6 +62,7 @@ const Login = () => {
                     icon: 'error',
                     confirmButtonText: 'Oops'
                 });
+                setLoading(false);
             })
     }
 

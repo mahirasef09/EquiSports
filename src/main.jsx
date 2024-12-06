@@ -27,22 +27,23 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader: () => fetch('http://localhost:5000/equipment')
       },
       {
-        path: "/allequipment",
+        path: "/allEquipment",
         element: <PrivateRoute>
           <AllEquipment></AllEquipment>
         </PrivateRoute>,
       },
       {
-        path: "/addequipment",
+        path: "/addEquipment",
         element: <PrivateRoute>
           <AddEquipment></AddEquipment>
         </PrivateRoute>,
       },
       {
-        path: "/mylist",
+        path: "/myList",
         element: <PrivateRoute>
           <MyList></MyList>
         </PrivateRoute>,
