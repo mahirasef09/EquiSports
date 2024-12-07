@@ -9,7 +9,7 @@ const Footer = () => {
                     <aside className="grid-flow-col items-center">
                         <a className="btn btn-ghost text-xl"><MdSportsVolleyball />EquiSports</a>
                         <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
-                        <a className="btn btn-ghost text-xs">Contact</a>
+                        <a className="btn btn-ghost text-xs">Contact: +8801792932410</a>
                     </aside>
                     <nav className="grid-flow-col gap-4 md:place-self-center justify-self-center md:justify-self-end">
                         <a>

@@ -1,23 +1,15 @@
 
 import Banner from "../Components/Banner";
-import ProductCard from "../Components/ProductCard";
-import { useContext } from "react";
-import { AuthContext } from "../Providers/AuthProvider";
+import SportsItemCategories from "../Components/SportsItemCategories";
+import SportsItems from "../Components/SportsItems";
 
 const Home = () => {
-    const { products } = useContext(AuthContext);
 
     return (
-        <div>
+        <div className="space-y-10">
             <Banner></Banner>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 my-5">
-                {
-                    products.map(product => <ProductCard 
-                        key={product._id}
-                        product={product}
-                        ></ProductCard>)
-                }
-            </div>
+            <SportsItemCategories></SportsItemCategories>
+            <SportsItems></SportsItems>
         </div>
     );
 };
