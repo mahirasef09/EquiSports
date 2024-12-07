@@ -6,10 +6,34 @@ import Swal from 'sweetalert2';
 export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [selectedProducts, setSelectedProducts] = useState([]);
+
+    const handleSelectedProduct = (product) => {
+        const isExist = selectedProducts.find(p => p._id === product._id);
+        if (isExist) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Item Already Exist',
+                icon: 'error',
+                confirmButtonText: 'Oops'
+            });
+        }
+
+        else {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Item Added Successfully',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+            });
+            const newProduct = [...selectedProducts, product];
+            setSelectedProducts(newProduct);
+        }
+    }
 
     const createNewUser = (email, password) => {
         setLoading(true);
@@ -38,7 +62,7 @@ const AuthProvider = ({children}) => {
             text: 'Log Out Successful',
             icon: 'success',
             confirmButtonText: 'Cool'
-          })
+        })
         return signOut(auth);
     }
 
@@ -54,12 +78,14 @@ const AuthProvider = ({children}) => {
     }, [])
 
     const authInfo = {
-        products, 
+        products,
         setProducts,
-        user, 
+        user,
         setUser,
         loading,
         setLoading,
+        selectedProducts,
+        handleSelectedProduct,
         createNewUser,
         updateUserProfile,
         userLogin,

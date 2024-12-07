@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-const ProductCard = ({ product }) => {
-    const { _id, photoUrl, category, itemName, description, rating, price } = product;
+const SelectedCard = ({product}) => {
+    const {photoUrl, category, itemName, description, rating, price} = product;
     return (
         <div>
             <div className="card bg-gray-100 w-80 h-[500px] shadow-xl p-3">
@@ -18,9 +18,12 @@ const ProductCard = ({ product }) => {
                     <p><span className="font-bold">Rating:</span> {rating}</p>
                     <p><span className="font-bold">Price:</span> ${price}</p>
                     <div className="card-actions">
-                        <Link to={`/viewDetails/${_id}`}>
-                            <button className="btn btn-primary">View Details</button>
-                        </Link>
+                        <div className="space-x-3">
+                            <Link to={`/updateEquipment`}>
+                                <button className="btn btn-primary">Update</button>
+                            </Link>
+                            <button className="btn btn-primary">Delete</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -28,4 +31,4 @@ const ProductCard = ({ product }) => {
     );
 };
 
-export default ProductCard;
+export default SelectedCard;

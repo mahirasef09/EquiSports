@@ -1,9 +1,13 @@
 
+import { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../Providers/AuthProvider';
 
 const ViewDetails = () => {
-    const products = useLoaderData();
-    const { _id, photoUrl, category, itemName, description, customization, rating, price, processingTime, stockStatus, userName, userEmail } = products;
+    const {handleSelectedProduct} = useContext(AuthContext);
+
+    const product = useLoaderData();
+    const { _id, photoUrl, category, itemName, description, customization, rating, price, processingTime, stockStatus, userName, userEmail } = product;
 
     return (
         <div className="w-11/12 mx-auto my-5">
@@ -26,8 +30,8 @@ const ViewDetails = () => {
                     <p><span className="font-bold">Added by:</span> {userName}</p>
                     <p><span className="font-bold">Email of the person who added:</span> {userEmail}</p>
                     <div className="card-actions justify-end">
-                        <Link to={`/myList/${_id}`}>
-                            <button className="btn btn-primary">Select</button>
+                        <Link to={`/myList`}>
+                            <button onClick={()=>handleSelectedProduct(product)} className="btn btn-primary">Select</button>
                         </Link>
                     </div>
                 </div>

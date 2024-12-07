@@ -13,7 +13,9 @@ function App() {
   return (
     <div>
       <NavBar></NavBar>
-      <Outlet></Outlet>
+      <section className='w-11/12 mx-auto'>
+        <Outlet></Outlet>
+      </section>
       <Footer></Footer>
     </div>
   )

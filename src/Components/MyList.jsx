@@ -1,34 +1,19 @@
+import { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import SelectedCard from "./SelectedCard";
 
 const MyList = () => {
-    const product = useLoaderData();
-    const { _id, photoUrl, category, itemName, description, rating, price } = product;
+    const {selectedProducts} = useContext(AuthContext);
 
     return (
-        <div className="my-5">
-            <div className="card bg-gray-100 w-96 h-[500px] shadow-xl p-3">
-                <figure className="px-10 pt-10">
-                    <img
-                        src={photoUrl}
-                        alt="Shoes"
-                        className="rounded-none" />
-                </figure>
-                <div className="card-body items-center text-center">
-                    <h2 className="card-title font-extrabold">{category}!</h2>
-                    <p><span className="font-bold">Name:</span> {itemName}</p>
-                    <p><span className="font-bold">Description:</span> {description}</p>
-                    <p><span className="font-bold">Rating:</span> {rating}</p>
-                    <p><span className="font-bold">Price:</span> ${price}</p>
-                    <div className="card-actions">
-                        <div className="space-x-3">
-                            <Link to={`/updateEquipment/${_id}`}>
-                                <button className="btn btn-primary">Update</button>
-                            </Link>
-                            <button className="btn btn-primary">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 my-5">
+            {
+                selectedProducts.map(product => <SelectedCard
+                key={product._id}
+                product={product}
+                ></SelectedCard>)
+            }
         </div>
     );
 };

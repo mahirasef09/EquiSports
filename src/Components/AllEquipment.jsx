@@ -29,11 +29,10 @@ const AllEquipment = () => {
                                 <td>{product.price}</td>
                                 <td>
                                     <Link to={`/viewDetails/${product._id}`}>
-                                        <button className="btn btn-xs btn-neutral">View Details</button>
+                                        <button className="btn btn-sm btn-neutral">View Details</button>
                                     </Link>
                                 </td>
                             </tr>)
-
                         }
                     </tbody>
                 </table>
