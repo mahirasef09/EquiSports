@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-const ProductCard = ({ equipment }) => {
-    const { _id, photoUrl, category, itemName, description, rating, price } = equipment;
+const ProductCard = ({ product }) => {
+    const { _id, photoUrl, category, itemName, description, rating, price } = product;
     return (
         <div>
             <div className="card bg-gray-100 w-96 h-[500px] shadow-xl p-3">

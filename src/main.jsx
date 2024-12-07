@@ -19,28 +19,35 @@ import AddEquipment from './Components/AddEquipment.jsx';
 import AuthProvider from './Providers/AuthProvider.jsx';
 import ErrorPage from './Components/ErrorPage.jsx';
 import ViewDetails from './Components/ViewDetails.jsx';
+import UpdateEquipment from './Components/UpdateEquipment.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
     errorElement: <ErrorPage></ErrorPage>,
+    loader: () => fetch('http://localhost:5000/equipment'),
     children: [
       {
         path: "/",
-        element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/equipment')
+        element: <Home></Home>
       },
       {
         path: "/allEquipment",
         element: <PrivateRoute>
           <AllEquipment></AllEquipment>
-        </PrivateRoute>,
+        </PrivateRoute>
       },
       {
         path: "/addEquipment",
         element: <PrivateRoute>
           <AddEquipment></AddEquipment>
+        </PrivateRoute>,
+      },
+      {
+        path: "/updateEquipment",
+        element: <PrivateRoute>
+          <UpdateEquipment></UpdateEquipment>
         </PrivateRoute>,
       },
       {
@@ -51,10 +58,11 @@ const router = createBrowserRouter([
         loader: ({params}) => fetch(`http://localhost:5000/equipment/${params.id}`)
       },
       {
-        path: "/myList",
+        path: "/myList/:id",
         element: <PrivateRoute>
           <MyList></MyList>
         </PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/equipment/${params.id}`)
       },
     ],
   },

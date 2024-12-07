@@ -1,9 +1,10 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+
+import { Link, useLoaderData } from 'react-router-dom';
 
 const ViewDetails = () => {
-    const product = useLoaderData();
-    const { _id, photoUrl, category, itemName, description, customization, rating, price, processingTime, stockStatus, userName, userEmail } = product;
+    const products = useLoaderData();
+    const { _id, photoUrl, category, itemName, description, customization, rating, price, processingTime, stockStatus, userName, userEmail } = products;
+
     return (
         <div className="w-11/12 mx-auto my-5">
             <div className="card card-side bg-base-100 shadow-xl">
@@ -11,7 +12,7 @@ const ViewDetails = () => {
                     <img
                         src={photoUrl}
                         alt="Movie"
-                        className='w-96' />
+                        className='w-96 h-full' />
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title font-extrabold">{category}!</h2>
@@ -25,7 +26,9 @@ const ViewDetails = () => {
                     <p><span className="font-bold">Added by:</span> {userName}</p>
                     <p><span className="font-bold">Email of the person who added:</span> {userEmail}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Select</button>
+                        <Link to={`/myList/${_id}`}>
+                            <button className="btn btn-primary">Select</button>
+                        </Link>
                     </div>
                 </div>
             </div>
