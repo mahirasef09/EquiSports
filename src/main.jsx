@@ -45,10 +45,11 @@ const router = createBrowserRouter([
         </PrivateRoute>,
       },
       {
-        path: "/updateEquipment",
+        path: "/updateEquipment/:id",
         element: <PrivateRoute>
           <UpdateEquipment></UpdateEquipment>
         </PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/equipment/${params.id}`)
       },
       {
         path: "/viewDetails/:id",

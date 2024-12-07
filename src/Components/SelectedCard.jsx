@@ -1,7 +1,48 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const SelectedCard = ({product}) => {
-    const {photoUrl, category, itemName, description, rating, price} = product;
+    const {selectedProducts, setSelectedProducts} = useContext(AuthContext);
+    const {_id, photoUrl, category, itemName, description, rating, price} = product;
+
+    const handleDelete = (_id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        })
+        .then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/equipment/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+
+                        // console.log(data);
+
+                        if (data.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your Item has been deleted.",
+                                icon: "success"
+                            });
+
+                            const remaining = selectedProducts.filter(p => p._id !== _id);
+                            console.log(_id, remaining);
+                            setSelectedProducts(remaining);
+                        }
+                    })
+            }
+        });
+    }
+
     return (
         <div>
             <div className="card bg-gray-100 w-80 h-[500px] shadow-xl p-3">
@@ -19,10 +60,10 @@ const SelectedCard = ({product}) => {
                     <p><span className="font-bold">Price:</span> ${price}</p>
                     <div className="card-actions">
                         <div className="space-x-3">
-                            <Link to={`/updateEquipment`}>
+                            <Link to={`/updateEquipment/${_id}`}>
                                 <button className="btn btn-primary">Update</button>
                             </Link>
-                            <button className="btn btn-primary">Delete</button>
+                            <button onClick={()=>handleDelete(_id)} className="btn btn-primary">Delete</button>
                         </div>
                     </div>
                 </div>

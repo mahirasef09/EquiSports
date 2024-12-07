@@ -40,7 +40,8 @@ const AddEquipment = () => {
                         text: 'Equipment Added Successfully in DB',
                         icon: 'success',
                         confirmButtonText: 'Cool'
-                    })
+                    });
+                    e.target.reset();
                 }
             })
     }
