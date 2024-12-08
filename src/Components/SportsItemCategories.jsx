@@ -68,7 +68,7 @@ const SportsItemCategories = () => {
             </div>
 
             <h2 className="text-black dark:text-white text-center text-5xl font-extrabold">Sports Items</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 my-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mx-7 my-5">
                 {
                     items.map(product => <ProductCard
                         key={product._id}
