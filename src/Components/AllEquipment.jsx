@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import PageTitle from "./PageTitle";
 
 const AllEquipment = () => {
     const { state } = useContext(AuthContext);
@@ -19,6 +20,7 @@ const AllEquipment = () => {
 
     return (
         <div>
+            <PageTitle title="EquiSports | All Equipment"></PageTitle>
             <div className="flex justify-center items-center my-5">
                 <button onClick={handleSort} className="btn btn-sm btn-success">Sort by Price</button>
             </div>

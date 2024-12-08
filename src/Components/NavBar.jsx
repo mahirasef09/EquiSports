@@ -72,8 +72,8 @@ const NavBar = () => {
                             {
                                 user && user?.email ? <button onClick={userLogout} className="btn btn-neutral btn-sm hover:bg-primary">Log Out</button> :
                                     <div className="flex flex-col md:flex-row gap-2">
-                                        <Link to={"/auth/login"} className="btn btn-accent btn-sm">Login</Link>
-                                        <Link to={"/auth/register"} className="btn btn-accent btn-sm">Register</Link>
+                                        <Link to={"/auth/login"} className="btn btn-accent btn-sm hover:bg-success">Login</Link>
+                                        <Link to={"/auth/register"} className="btn btn-accent btn-sm hover:bg-success">Register</Link>
                                     </div>
                             }
                         </div>

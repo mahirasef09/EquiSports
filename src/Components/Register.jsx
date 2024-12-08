@@ -3,6 +3,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import PageTitle from "./PageTitle";
 
 const Register = () => {
     const { createNewUser, setUser, setLoading, updateUserProfile } = useContext(AuthContext);
@@ -68,6 +69,7 @@ const Register = () => {
 
     return (
         <div>
+            <PageTitle title="EquiSports | Register"></PageTitle>
             <div className='min-h-screen flex justify-center items-center my-3'>
                 <div className="card bg-base-100 w-full max-w-lg shrink-0 p-10 rounded-3xl shadow-2xl">
                     <h3 className='text-2xl font-extrabold text-center'>Welcome!</h3>
