@@ -63,7 +63,7 @@ const NavBar = () => {
                             {
                                 user && user?.email ?
                                     <div className="hidden md:flex gap-2 items-center" data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} data-tooltip-place="bottom">
-                                        <img className="w-12 rounded-none" src={user?.photoURL} alt="" />
+                                        <img className="w-12 rounded-full" src={user?.photoURL} alt="" />
                                     </div> :
                                     <FaUserTie className="text-2xl"></FaUserTie>
                             }

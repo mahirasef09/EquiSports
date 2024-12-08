@@ -5,7 +5,8 @@ import { useEffect } from "react";
 const SportGallery = () => {
     useEffect(()=>{
         Aos.init({duration: 3000});
-    }, [])
+    }, []);
+    
     return (
         <div>
             <h2 className="mb-5 text-black dark:text-white text-center text-5xl font-extrabold">Sports Gallery</h2>

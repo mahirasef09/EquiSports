@@ -19,7 +19,7 @@ const ViewDetails = () => {
                         <img
                             src={photoUrl}
                             alt="Movie"
-                            className='w-96 h-full' />
+                            className='md:w-96 h-full' />
                     </figure>
                     <div className="card-body">
                         <h2 className="card-title font-extrabold">{category}!</h2>

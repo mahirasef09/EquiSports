@@ -8,7 +8,7 @@ const AllEquipment = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/equipment')
+        fetch('https://server-of-equisports.vercel.app/allEquipment')
             .then(res => res.json())
             .then(data => setData(data))
     }, [state]);
@@ -25,9 +25,9 @@ const AllEquipment = () => {
                 <button onClick={handleSort} className="btn btn-sm btn-success">Sort by Price</button>
             </div>
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table table-xs">
                     {/* head */}
-                    <thead>
+                    <thead className="text-black dark:text-white">
                         <tr>
                             <th>Name</th>
                             <th>Category</th>
@@ -36,10 +36,13 @@ const AllEquipment = () => {
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="text-black dark:text-white">
                         {/* row 1 */}
                         {
-                            data.map(product => <tr key={product._id}>
+                            data.map(product => <tr 
+                                key={product._id}
+                                className="hover"
+                            >
                                 <td>{product.itemName}</td>
                                 <td>{product.category}</td>
                                 <td>{product.rating}</td>

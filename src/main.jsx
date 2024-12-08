@@ -26,7 +26,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <App></App>,
     errorElement: <ErrorPage></ErrorPage>,
-    loader: () => fetch('http://localhost:5000/equipment'),
+    loader: () => fetch('https://server-of-equisports.vercel.app/equipment'),
     children: [
       {
         path: "/",
@@ -49,14 +49,14 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <UpdateEquipment></UpdateEquipment>
         </PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/equipment/${params.id}`)
+        loader: ({params}) => fetch(`https://server-of-equisports.vercel.app/equipment/${params.id}`)
       },
       {
         path: "/viewDetails/:id",
         element: <PrivateRoute>
           <ViewDetails></ViewDetails>
         </PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/equipment/${params.id}`)
+        loader: ({params}) => fetch(`https://server-of-equisports.vercel.app/equipment/${params.id}`)
       },
       {
         path: "/myList",

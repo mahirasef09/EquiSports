@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import SelectedCard from "./SelectedCard";
 import PageTitle from "./PageTitle";
