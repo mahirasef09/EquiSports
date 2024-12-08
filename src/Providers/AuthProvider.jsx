@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [selectedProducts, setSelectedProducts] = useState([]);
+    const [state, setState] = useState(false);
 
     const handleSelectedProduct = (product) => {
         const isExist = selectedProducts.find(p => p._id === product._id);
@@ -86,6 +87,8 @@ const AuthProvider = ({ children }) => {
         setLoading,
         selectedProducts,
         setSelectedProducts,
+        state,
+        setState,
         handleSelectedProduct,
         createNewUser,
         updateUserProfile,

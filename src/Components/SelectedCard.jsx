@@ -4,7 +4,8 @@ import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const SelectedCard = ({product}) => {
-    const {selectedProducts, setSelectedProducts} = useContext(AuthContext);
+    const {selectedProducts, setSelectedProducts, state, setState} = useContext(AuthContext);
+
     const {_id, photoUrl, category, itemName, description, rating, price} = product;
 
     const handleDelete = (_id) => {
@@ -35,8 +36,9 @@ const SelectedCard = ({product}) => {
                             });
 
                             const remaining = selectedProducts.filter(p => p._id !== _id);
-                            console.log(_id, remaining);
                             setSelectedProducts(remaining);
+
+                            setState(!state);
                         }
                     })
             }

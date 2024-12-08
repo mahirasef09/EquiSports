@@ -4,7 +4,7 @@ import { MdSportsVolleyball } from "react-icons/md";
 const Footer = () => {
     return (
         <div>
-            <footer className="footer bg-neutral text-neutral-content items-center p-4">
+            <footer className="footer bg-neutral text-neutral-content items-center p-4 mt-5">
                 
                     <aside className="grid-flow-col items-center">
                         <a className="btn btn-ghost text-xl"><MdSportsVolleyball />EquiSports</a>

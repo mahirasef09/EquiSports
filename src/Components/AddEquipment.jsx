@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const AddEquipment = () => {
+    const {state, setState} = useContext(AuthContext);
+
+
     const handleAddEquipment = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -41,7 +46,10 @@ const AddEquipment = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     });
+
                     e.target.reset();
+
+                    setState(!state);
                 }
             })
     }

@@ -1,7 +1,6 @@
 
 import Banner from "../Components/Banner";
 import SportsItemCategories from "../Components/SportsItemCategories";
-import SportsItems from "../Components/SportsItems";
 
 const Home = () => {
 
@@ -9,7 +8,6 @@ const Home = () => {
         <div className="space-y-10">
             <Banner></Banner>
             <SportsItemCategories></SportsItemCategories>
-            <SportsItems></SportsItems>
         </div>
     );
 };

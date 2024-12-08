@@ -1,7 +1,10 @@
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Providers/AuthProvider";
+import { useContext } from "react";
 
 const UpdateEquipment = () => {
+    const {state, setState} = useContext(AuthContext);
     const product = useLoaderData();
     const { _id, photoUrl, category, itemName, description, customization, rating, price, processingTime, stockStatus, userName, userEmail } = product;
 
@@ -44,7 +47,9 @@ const UpdateEquipment = () => {
                         text: 'Equipment Updated Successfully in DB',
                         icon: 'success',
                         confirmButtonText: 'Cool'
-                    })
+                    });
+
+                    setState(!state);
                 }
             })
     }

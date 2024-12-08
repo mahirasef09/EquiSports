@@ -1,12 +1,19 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { MdSportsVolleyball } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { FaUserTie } from "react-icons/fa";
 import { Tooltip } from 'react-tooltip';
+import { IoMoon, IoSunny } from "react-icons/io5";
 
 const NavBar = () => {
     const { user, userLogout } = useContext(AuthContext);
+    const [dark, setDark] = useState(false);
+
+    const darkModeHandler = () => {
+        setDark(!dark);
+        document.body.classList.toggle("dark");
+    }
 
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
@@ -70,7 +77,15 @@ const NavBar = () => {
                                     </div>
                             }
                         </div>
-                        <a className="btn btn-neutral btn-sm">Dark</a>
+                        <button onClick={()=> darkModeHandler()} className="btn btn-primary btn-sm">
+                            {
+
+                                dark && <IoSunny />
+                            }
+                            {
+                                !dark && <IoMoon />
+                            }
+                        </button>
                         <Tooltip id="my-tooltip" />
                     </div>
                 </div>

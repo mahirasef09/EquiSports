@@ -9,9 +9,10 @@ function App() {
   const { setProducts } = useContext(AuthContext);
   const loadedEquipment = useLoaderData();
   setProducts(loadedEquipment);
+  
 
   return (
-    <div>
+    <div className="bg-white dark:bg-black">
       <NavBar></NavBar>
       <section className='w-11/12 mx-auto'>
         <Outlet></Outlet>
