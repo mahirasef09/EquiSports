@@ -10,8 +10,9 @@ EquiSports, situated at Dhaka, Bangladesh, is a leading E-commerce site  offerin
 *	In All Equipment section you can see all our products and sort by price.
 *	After getting registered and logged in you can add product In Add Equipment section.
 *	After getting registered and logged in you can also see our products details and select them.
-*	Selected products are listed in the my list section.
-*	You can also update & delete your selected items.
+*	Selected products are listed in the Dashboard section.
+*	Added products by a specific user are listed in the My List section.
+*	You can also update & delete your added items.
 *	We ensure that we will give you 24/7 support to achieve you the best products.
 
 # **Technologies used in this project:**
@@ -23,6 +24,8 @@ EquiSports, situated at Dhaka, Bangladesh, is a leading E-commerce site  offerin
 6.  Firebase authentication is used.
 7.  For server express is used.
 8.  For storage mongodb is used.
+9.  In server section cors is used.
+10.  In server section dotenv is used.
 
 # **Requirement Document Link:**
 https://docs.google.com/document/d/1zl97jEDUtdadOGwHSV_fP1gShCwCxwk6DDhQbEpcfHY/edit?tab=t.0

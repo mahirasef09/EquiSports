@@ -4,8 +4,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import PageTitle from "./PageTitle";
 
 const AddEquipment = () => {
-    const { state, setState } = useContext(AuthContext);
-
+    const { user, state, setState } = useContext(AuthContext);
 
     const handleAddEquipment = (e) => {
         e.preventDefault();
@@ -130,13 +129,14 @@ const AddEquipment = () => {
                                 <label className="label">
                                     <span className="label-text font-bold">User Email</span>
                                 </label>
-                                <input type="email" name='userEmail' placeholder="User Email" className="input input-bordered" required />
+                                <input type="email" name='userEmail' defaultValue={user?.email} disabled placeholder="User Email" className="input input-bordered" required />
                             </div>
                             <div className="form-control flex-1">
                                 <label className="label">
                                     <span className="label-text font-bold">User Name</span>
                                 </label>
-                                <input type="text" name='userName' placeholder="User Name" className="input input-bordered" required />
+                                <input type="text" name='userName' defaultValue={user?.displayName
+                                } disabled placeholder="User Name" className="input input-bordered" required />
                             </div>
                         </div>
 

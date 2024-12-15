@@ -20,6 +20,7 @@ import AuthProvider from './Providers/AuthProvider.jsx';
 import ErrorPage from './Components/ErrorPage.jsx';
 import ViewDetails from './Components/ViewDetails.jsx';
 import UpdateEquipment from './Components/UpdateEquipment.jsx';
+import Dashboard from './Components/Dashboard.jsx';
 
 const router = createBrowserRouter([
   {
@@ -59,9 +60,15 @@ const router = createBrowserRouter([
         loader: ({params}) => fetch(`https://server-of-equisports.vercel.app/equipment/${params.id}`)
       },
       {
-        path: "/myList",
+        path: "/myList/:email",
         element: <PrivateRoute>
           <MyList></MyList>
+        </PrivateRoute>
+      },
+      {
+        path: "/dashboard",
+        element: <PrivateRoute>
+          <Dashboard></Dashboard>
         </PrivateRoute>
       },
     ],

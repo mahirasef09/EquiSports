@@ -33,7 +33,7 @@ const ViewDetails = () => {
                         <p><span className="font-bold">Added by:</span> {userName}</p>
                         <p><span className="font-bold">Email of the person who added:</span> {userEmail}</p>
                         <div className="card-actions justify-end">
-                            <Link to={`/myList`}>
+                            <Link to={`/dashboard`}>
                                 <button onClick={() => handleSelectedProduct(product)} className="btn btn-primary">Select</button>
                             </Link>
                         </div>
