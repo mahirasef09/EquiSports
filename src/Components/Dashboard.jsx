@@ -9,7 +9,7 @@ const Dashboard = () => {
     return (
         <div>
             <PageTitle title="EquiSports | Dashboard"></PageTitle>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mx-7 my-5">
+            <div className="my-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
                 {
                     selectedProducts.length == 0 ?
                         <div className="md:ml-96 w-full">

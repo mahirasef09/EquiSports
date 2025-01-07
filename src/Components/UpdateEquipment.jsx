@@ -130,13 +130,13 @@ const UpdateEquipment = () => {
                                 <label className="label">
                                     <span className="label-text font-bold">User Email</span>
                                 </label>
-                                <input type="email" name='userEmail' defaultValue={userEmail} disabled placeholder="User Email" className="input input-bordered" required />
+                                <input type="email" name='userEmail' defaultValue={userEmail} readOnly placeholder="User Email" className="input input-bordered" required />
                             </div>
                             <div className="form-control flex-1">
                                 <label className="label">
                                     <span className="label-text font-bold">User Name</span>
                                 </label>
-                                <input type="text" name='userName' defaultValue={userName} disabled placeholder="User Name" className="input input-bordered" required />
+                                <input type="text" name='userName' defaultValue={userName} readOnly placeholder="User Name" className="input input-bordered" required />
                             </div>
                         </div>
 

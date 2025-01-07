@@ -129,14 +129,14 @@ const AddEquipment = () => {
                                 <label className="label">
                                     <span className="label-text font-bold">User Email</span>
                                 </label>
-                                <input type="email" name='userEmail' defaultValue={user?.email} disabled placeholder="User Email" className="input input-bordered" required />
+                                <input type="email" name='userEmail' defaultValue={user?.email} readOnly placeholder="User Email" className="input input-bordered" required />
                             </div>
                             <div className="form-control flex-1">
                                 <label className="label">
                                     <span className="label-text font-bold">User Name</span>
                                 </label>
                                 <input type="text" name='userName' defaultValue={user?.displayName
-                                } disabled placeholder="User Name" className="input input-bordered" required />
+                                } readOnly placeholder="User Name" className="input input-bordered" required />
                             </div>
                         </div>
 

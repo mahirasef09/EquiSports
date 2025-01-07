@@ -15,13 +15,20 @@ const NavBar = () => {
         document.body.classList.toggle("dark");
     }
 
-    const links = <>
+    const publicLinks = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
+        <li><NavLink to={'/gallery'}>Gallery</NavLink></li>
+        <li><NavLink to={'/whyUs'}>Why Us</NavLink></li>
+        <li><NavLink to={'/contactUs'}>Contact Us</NavLink></li>
+    </>
+
+    const privateLinks = <>
         <li><NavLink to={'/allEquipment'}>All Equipment</NavLink></li>
         <li><NavLink to={'/addEquipment'}>Add Equipment</NavLink></li>
         <li><NavLink to={`/myList/${user?.email}`}>My List</NavLink></li>
         <li><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
     </>
+
     return (
         <div>
             <div className="navbar bg-gray-100">
@@ -45,7 +52,10 @@ const NavBar = () => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                             {
-                                links
+                                publicLinks
+                            }
+                            {
+                                user && privateLinks
                             }
                         </ul>
                     </div>
@@ -54,7 +64,10 @@ const NavBar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {
-                            links
+                            publicLinks
+                        }
+                        {
+                            user && privateLinks
                         }
                     </ul>
                 </div>
@@ -63,8 +76,16 @@ const NavBar = () => {
                         <div>
                             {
                                 user && user?.email ?
-                                    <div className="hidden md:flex gap-2 items-center" data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} data-tooltip-place="bottom">
-                                        <img className="w-12 rounded-full" src={user?.photoURL} alt="" />
+                                    <div className="flex gap-2 items-center" data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} data-tooltip-place="left">
+                                        <div className="dropdown dropdown-end">
+                                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                                <div className="w-10 rounded-full">
+                                                    <img
+                                                        alt="User"
+                                                        src={user?.photoURL} />
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div> :
                                     <FaUserTie className="text-2xl"></FaUserTie>
                             }
@@ -78,7 +99,7 @@ const NavBar = () => {
                                     </div>
                             }
                         </div>
-                        <button onClick={()=> darkModeHandler()} className="btn btn-primary btn-sm">
+                        <button onClick={() => darkModeHandler()} className="mr-5 btn btn-neutral btn-sm">
                             {
 
                                 dark && <IoSunny />

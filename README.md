@@ -19,7 +19,7 @@ EquiSports, situated at Dhaka, Bangladesh, is a leading E-commerce site  offerin
 1.	This project is designed in vite+react framework.
 2.	tailwind css is used.
 3.	daisyUI is used.
-4.	React Router, React icons, React helmet, React Awesome Reveal, React Tooltip, AOS Animation, Sweet alert etc are used.
+4.	React Router, React icons, React helmet, React Awesome Reveal, React Tooltip, AOS Animation, Swiper, Sweet alert etc are used.
 5.  Dark & Light mode functionality added.
 6.  Firebase authentication is used.
 7.  For server express is used.

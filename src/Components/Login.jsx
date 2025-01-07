@@ -29,6 +29,7 @@ const Login = () => {
                 });
                 e.target.reset();
                 navigate(location?.state ? location.state : "/");
+                setLoading(false);
             })
             .catch((err) => {
                 Swal.fire({
@@ -37,7 +38,6 @@ const Login = () => {
                     icon: 'error',
                     confirmButtonText: 'Oops'
                 });
-                setLoading(false);
                 e.target.reset();
             });
 
@@ -63,14 +63,13 @@ const Login = () => {
                     icon: 'error',
                     confirmButtonText: 'Oops'
                 });
-                setLoading(false);
             })
     }
 
     return (
         <div>
             <PageTitle title="EquiSports | Login"></PageTitle>
-            <div className='min-h-screen flex justify-center items-center'>
+            <div className='min-h-screen bg-white dark:bg-black flex justify-center items-center'>
                 <div className="card bg-base-100 w-full max-w-lg shrink-0 p-10 rounded-3xl shadow-2xl">
                     <h3 className='text-2xl font-extrabold text-center'>Welcome Back!</h3>
                     <form onSubmit={handleSubmit} className="card-body">

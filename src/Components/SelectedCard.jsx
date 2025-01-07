@@ -4,7 +4,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const SelectedCard = ({product}) => {
-    const {selectedProducts, setSelectedProducts, state, setState} = useContext(AuthContext);
+    const { state, setState} = useContext(AuthContext);
 
     const {_id, photoUrl, category, itemName, description, rating, price} = product;
 
@@ -35,9 +35,6 @@ const SelectedCard = ({product}) => {
                                 icon: "success"
                             });
 
-                            const remaining = selectedProducts.filter(p => p._id !== _id);
-                            setSelectedProducts(remaining);
-
                             setState(!state);
                         }
                     })
@@ -47,7 +44,7 @@ const SelectedCard = ({product}) => {
 
     return (
         <div>
-            <div className="card bg-gray-100 w-80 h-[500px] shadow-xl p-3">
+            <div className="card bg-gray-100 h-[500px] shadow-xl p-3">
                 <figure className="px-10 pt-10">
                     <img
                         src={photoUrl}

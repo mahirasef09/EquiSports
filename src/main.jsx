@@ -21,6 +21,9 @@ import ErrorPage from './Components/ErrorPage.jsx';
 import ViewDetails from './Components/ViewDetails.jsx';
 import UpdateEquipment from './Components/UpdateEquipment.jsx';
 import Dashboard from './Components/Dashboard.jsx';
+import Gallery from './Components/Gallery.jsx';
+import ContactUs from './Components/ContactUs.jsx';
+import WhyChooseUs from './Components/WhyChooseUs.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +35,18 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>
+      },
+      {
+        path: "/gallery",
+        element: <Gallery></Gallery>
+      },
+      {
+        path: "/whyUs",
+        element: <WhyChooseUs></WhyChooseUs>
+      },
+      {
+        path: "/contactUs",
+        element: <ContactUs></ContactUs>
       },
       {
         path: "/allEquipment",
