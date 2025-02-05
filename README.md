@@ -27,6 +27,24 @@ EquiSports, situated at Dhaka, Bangladesh, is a leading E-commerce site  offerin
 9.  In server section cors is used.
 10.  In server section dotenv is used.
 
+# **Dependencies of this project:**
+*    "@emotion/react": "^11.13.5",
+*    "aos": "^3.0.0-beta.6",
+*    "firebase": "^11.0.2",
+*    "localforage": "^1.10.0",
+*    "match-sorter": "^8.0.0",
+*    "react": "^18.3.1",
+*    "react-awesome-reveal": "^4.2.14",
+*    "react-dom": "^18.3.1",
+*    "react-helmet": "^6.1.0",
+*    "react-icons": "^5.4.0",
+*    "react-router-dom": "^6.28.0",
+*    "react-toastify": "^10.0.6",
+*    "react-tooltip": "^5.28.0",
+*    "sort-by": "^1.2.0",
+*    "sweetalert2": "^11.14.5",
+*    "swiper": "^11.1.15"
+
 # **Requirement Document Link:**
 https://docs.google.com/document/d/1zl97jEDUtdadOGwHSV_fP1gShCwCxwk6DDhQbEpcfHY/edit?tab=t.0
 or,
